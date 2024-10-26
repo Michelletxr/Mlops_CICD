@@ -68,3 +68,8 @@ with open("./Results/metrics.txt", "w") as outfile:
 
 ## Saving the model file
 sio.dump(pipe, "./Model/drug_pipeline.skops")
+
+## Load pipeline
+unknown_types = sio.get_untrusted_types(file="./Model/drug_pipeline.skops")
+print(unknown_types)
+sio.load("./Model/drug_pipeline.skops", trusted=unknown_types)
