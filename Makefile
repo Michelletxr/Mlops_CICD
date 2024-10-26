@@ -1,6 +1,11 @@
 install:
 	pip install --upgrade pip &&\
 		pip install -r requirements.txt
+        
+    # Instale o pywin32 somente se estiver no Windows
+    if [ "$$(uname)" = "MINGW32_NT" ] || [ "$$(uname)" = "MINGW64_NT" ]; then \
+        pip install pywin32==308; \
+    fi
 
 format:	
 	black *.py 
