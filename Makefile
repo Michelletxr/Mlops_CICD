@@ -1,4 +1,5 @@
 install:
+	# Tab antes de cada comando abaixo
 	pip install --upgrade pip &&\
 		pip install -r requirements.txt
 
@@ -12,7 +13,7 @@ eval:
 	echo "## Model Metrics" > report.md
 	cat ./Results/metrics.txt >> report.md
 	
-	echo '\n## Confusion Matrix Plot' >> report.md
+	echo -e '\n## Confusion Matrix Plot' >> report.md
 	echo '![Confusion Matrix](./Results/model_results.png)' >> report.md
 	
 	cml comment create report.md
@@ -35,4 +36,3 @@ push-hub:
 	huggingface-cli upload Michtxr2001/Drug-Classification ./Results /Metrics --repo-type=space --commit-message="Sync Model"
 
 deploy: hf-login push-hub
-
